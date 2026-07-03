@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2>{{ course.name }}</h2>
+        </div>
+
+        <div class="card-body">
+
+            <p class="lead">
+                {{ course.description }}
+            </p>
+
+            <hr>
+
+            <h4>Lessons</h4>
+
+            <ul class="list-group">
+                {% for lesson in course.lessons.all %}
+                    <li class="list-group-item">
+                        <strong>{{ lesson.title }}</strong>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">
+                        No lessons available.
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
